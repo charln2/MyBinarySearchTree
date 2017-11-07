@@ -103,10 +103,6 @@ int main() {
     }
     infile.close();
     clearArray(ndArray);        
-<<<<<<< HEAD
-=======
-    //delete[] ndArray;
->>>>>>> 2786a2e7cc1945995cb5e7f43c4d29262bae4db2
 
     return 0;
 }
