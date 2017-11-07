@@ -22,90 +22,90 @@ void printArray(NodeData*[]);
 void printTree(const BinTree&);
 
 int main() {
-	// create file object infile and open it
-	// for testing, call your data file something appropriate, e.g., data2.txt
-	ifstream infile("data2.txt");
-	if (!infile) {
-		cout << "File could not be opened." << endl;
-		return 1;
-	}
-	// the NodeData class must have a constructor that takes a string
-	NodeData notND("not");
-	NodeData andND("and");
-	NodeData sssND("sss");
-	NodeData eND("e");
-	NodeData mND("m");
-	NodeData tND("t");
+    // create file object infile and open it
+    // for testing, call your data file something appropriate, e.g., data2.txt
+    ifstream infile("data2.txt");
+    if (!infile) {
+        cout << "File could not be opened." << endl;
+        return 1;
+    }
+    // the NodeData class must have a constructor that takes a string
+    NodeData notND("not");
+    NodeData andND("and");
+    NodeData sssND("sss");
+    NodeData eND("e");
+    NodeData mND("m");
+    NodeData tND("t");
 
-	BinTree T, T2, dup;
-	NodeData* ndArray[ARRAYSIZE];
-	initArray(ndArray);
-	cout << "Initial data:" << endl << "  ";
-	buildTree(T, infile);              // builds and displays initial data
-	cout << endl;
-	BinTree first(T);                  // test copy constructor
-	dup = dup = T;                     // test operator=, self-assignment
-	while (!infile.eof()) {
-		cout << "Tree Inorder:" << endl << T; // operator<< does endl
-		T.displaySideways();
+    BinTree T, T2, dup;
+    NodeData* ndArray[ARRAYSIZE];
+    initArray(ndArray);
+    cout << "Initial data:" << endl << "  ";
+    buildTree(T, infile);              // builds and displays initial data
+    cout << endl;
+    BinTree first(T);                  // test copy constructor
+    dup = dup = T;                     // test operator=, self-assignment
+    while (!infile.eof()) {
+        cout << "Tree Inorder:" << endl << T; // operator<< does endl
+        T.displaySideways();
 
-		// test retrieve 
-		NodeData* p;      // pointer of retrieved object
-		bool found;       // whether or not object was found in tree
-		found = T.retrieve(andND, p);
-		cout << "Retrieve --> and:  " << 
+        // test retrieve 
+        NodeData* p;      // pointer of retrieved object
+        bool found;       // whether or not object was found in tree
+        found = T.retrieve(andND, p);
+        cout << "Retrieve --> and:  " << 
             (found ? "found" : "not found") << endl;
-		found = T.retrieve(notND, p);
-		cout << "Retrieve --> not:  " << 
+        found = T.retrieve(notND, p);
+        cout << "Retrieve --> not:  " << 
             (found ? "found" : "not found") << endl;
-		found = T.retrieve(sssND, p);
-		cout << "Retrieve --> sss:  " << 
+        found = T.retrieve(sssND, p);
+        cout << "Retrieve --> sss:  " << 
             (found ? "found" : "not found") << endl;
 
-		// test getDepth 
-		cout << "Depth    --> and:  " << T.getDepth(andND) << endl;
-		cout << "Depth    --> not:  " << T.getDepth(notND) << endl;
-		cout << "Depth    --> sss:  " << T.getDepth(sssND) << endl;
+        // test getDepth 
+        cout << "Depth    --> and:  " << T.getDepth(andND) << endl;
+        cout << "Depth    --> not:  " << T.getDepth(notND) << endl;
+        cout << "Depth    --> sss:  " << T.getDepth(sssND) << endl;
 
-		// test ==, and != 
-		T2 = T;
-		cout << "T == T2?     " << 
+        // test ==, and != 
+        T2 = T;
+        cout << "T == T2?     " << 
             (T == T2 ? "equal" : "not equal") << endl;
-		cout << "T != first?  " << 
+        cout << "T != first?  " << 
             (T != first ? "not equal" : "equal") << endl;
-		cout << "T == dup?    " << 
+        cout << "T == dup?    " << 
             (T == dup ? "equal" : "not equal") << endl;
-		dup = T;
+        dup = T;
 
-		// TREE ==> ARRAY
-		T.bstreeToArray(ndArray);
+        // TREE ==> ARRAY
+        T.bstreeToArray(ndArray);
         cout << "Tree ==> Array. \
             \nArray should be full, Tree should be empty:" << endl;
         printArray(ndArray);
         printTree(T);
 
         // ARRAY ==> TREE
-		T.arrayToBSTree(ndArray);
+        T.arrayToBSTree(ndArray);
         cout << "Array ==> Tree. \
             \nArray should be empty, Tree should be full:" << endl;
         printArray(ndArray);
         printTree(T);
 
-        // ---------------------------------------------------------------------
+        // --------------------------------------------------------------------
         // setup next test
-		T.makeEmpty();                  // empty out the tree
+        T.makeEmpty();                  // empty out the tree
         clearArray(ndArray);            // delete non-null tree data, null all
-		cout << "---------------------------------------------------------------"
-			<< endl;
-		cout << "Initial data:" << endl << "  ";
-		buildTree(T, infile);
-		cout << endl;
-	}
-    clearArray(ndArray);        
-    delete[] ndArray;
+        cout << "-------------------------------------------------------------"
+            << endl;
+        cout << "Initial data:" << endl << "  ";
+        buildTree(T, infile);
+        cout << endl;
+    }
     infile.close();
+    clearArray(ndArray);        
+    //delete[] ndArray;
 
-	return 0;
+    return 0;
 }
 
 /** ===========================================================================
@@ -118,19 +118,19 @@ int main() {
     member function (it's not strictly ADT). It's a global function. 
 ---------------------------------------------------------------------------- */
 void buildTree(BinTree& T, ifstream& infile) {
-	string s;
+    string s;
 
-	while(true) {
-		infile >> s;
-		cout << s << ' ';
-		if (s == "$$" || infile.eof()) break; // at end of tree instruc/ file
-		NodeData* ptr = new NodeData(s); // NodeData constructor takes string
-		// could do a setData that reads a string to keep it object-oriented
+    while(true) {
+        infile >> s;
+        cout << s << ' ';
+        if (s == "$$" || infile.eof()) break; // at end of tree instruc/ file
+        NodeData* ptr = new NodeData(s); // NodeData constructor takes string
+        // could do a setData that reads a string to keep it object-oriented
 
-		bool success = T.insert(ptr);
-		if (!success)
-			delete ptr;                       // duplicate case, not inserted 
-	}
+        bool success = T.insert(ptr);
+        if (!success)
+            delete ptr;                       // duplicate case, not inserted 
+    }
 }
 
 
@@ -139,7 +139,7 @@ void buildTree(BinTree& T, ifstream& infile) {
 ---------------------------------------------------------------------------- */
 void initArray(NodeData* ndArray[]) {
     for (int i = 0; i < ARRAYSIZE; i++) {
-		ndArray[i] = nullptr;
+        ndArray[i] = nullptr;
     }
 }
 
