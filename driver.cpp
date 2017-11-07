@@ -101,9 +101,9 @@ int main() {
 		buildTree(T, infile);
 		cout << endl;
 	}
-        clearArray(ndArray);        
-        delete[] ndArray;
-        infile.close();
+    clearArray(ndArray);        
+    delete[] ndArray;
+    infile.close();
 
 	return 0;
 }
