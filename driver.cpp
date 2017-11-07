@@ -103,7 +103,6 @@ int main() {
     }
     infile.close();
     clearArray(ndArray);        
-    //delete[] ndArray;
 
     return 0;
 }
