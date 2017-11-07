@@ -123,7 +123,7 @@ bool BinTree::insert(NodeData* nd, Node*& n) {
     // ignore duplicates, insert if nullptr found.
     if (n == nullptr) {
         n = new Node();
-        n->data = new NodeData(*nd);
+        n->data = nd;
         return true;
     } else if (*nd == *n->data) {
         return false;
