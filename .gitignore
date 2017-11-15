@@ -34,3 +34,10 @@
 #folders
 /Debug
 *.vcxproj*
+
+#Visual Studio
+.vs/
+*.VC.VC.opendb
+*.VC.db
+*.sln
+
