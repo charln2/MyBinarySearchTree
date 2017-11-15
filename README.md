@@ -1,4 +1,6 @@
 # MyBinarySearchTree
-Sample project to showcase understanding of implementation and documentation using C++. This was a school project which I revisited to brush up on memory management. 
+Sample project using C++ intended to refine my grasp on programming concepts such as object-oriented design and memory management.
 
-For a detailed explanation, check out this repository's wiki.
+It also serves to demonstrate my capacity to create clear and meaningful documentation.
+
+For a detailed explanation, check out this repository's wiki via the corresponding tab above.
